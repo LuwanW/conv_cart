@@ -1,4 +1,63 @@
 <!--index.wxml-->
-<view >
- Main Page
+<view class="pyg_index" hover-class="none" hover-stop-propagation="false">
+    <!--start-->
+    <SearchInput></SearchInput>
+    <!--end-->
+    <!--swiper-->
+    <view class="index_swiper" hover-class="none" hover-stop-propagation="false">
+        <swiper  autoplay indicator-dots circular>
+
+            <block wx:for="{{swiperList}}" wx:key="userIDs">  
+                <swiper-item>  
+                <!-- image size = 750x180-->
+                    <image src="{{item.picUrl}}" class="slide-image" mode="widthFix"/>  
+                </swiper-item>  
+                
+            </block>
+              
+        </swiper>
+    </view>
+
+    <!--navigator-->
+    <view class="index_cate" hover-class="none" hover-stop-propagation="false">
+        <navigator
+        wx:for="{{cateList}}"
+        wx:key="name"
+        >
+        <image mode="widthFix" src="{{item.image_src}}"></image>
+            
+        </navigator>
+    </view>
+      
+    <!--floor-->
+    <view class="index_floor" hover-class="none" hover-stop-propagation="false">
+        <view class="floor_group" hover-class="none" hover-stop-propagation="false"
+        wx:for="{{floorList}}"
+        wx:for-item="item1"
+        wx:for-index="index1"
+        wx:key="floor_title"
+        >
+            <!--title-->
+            <view class="floor_title" hover-class="none" hover-stop-propagation="false">
+                <image mode="widthFix" src="{{item1.floor_title.image_src}}"></image>
+            </view>
+            
+            <!--content-->
+            <view class="floor_list" hover-class="none" hover-stop-propagation="false">
+                <navigator 
+                wx:for="{{item1.product_list}}"
+                wx:for-item="item2"
+                wx:for-index="index2"
+                wx:key="name"
+                >
+                <image mode="{{index2===0?'widthFix':'scaleToFill'}}" src="{{item2.image_src}}"> </image>
+                </navigator>
+              
+            </view>
+
+        </view>
+
+
+    </view>
+
 </view>

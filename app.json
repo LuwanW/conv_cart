@@ -16,10 +16,43 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#5D70E3",
     "navigationBarTitleText": "conv_cart",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"white"
   },
-  "style": "v2",
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#000",
+    "backgroundColor": "",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "Main Page",
+        "iconPath": "icons/home-o.jpg",
+        "selectedIconPath": "icons/home.jpg"
+      },
+      {
+        "pagePath": "pages/category/index",
+        "text": "Category",
+        "iconPath": "icons/category-o.jpg",
+        "selectedIconPath": "icons/category.jpg"
+      },
+      {
+        "pagePath": "pages/cart/index",
+        "text": "Cart",
+        "iconPath": "icons/cart-o.jpg",
+        "selectedIconPath": "icons/cart.jpg"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "text": "User",
+        "iconPath": "icons/my-o.jpg",
+        "selectedIconPath": "icons/my.jpg"
+      }
+    ]
+  },
+  
   "sitemapLocation": "sitemap.json"
 }

@@ -1,38 +1,35 @@
+import {request} from "../../request/index.js"
 //Page Object
 Page({
   data: {
-    
+    swiperList:[],
+    cateList:[],
+    floorList:[]
   },
   //options(Object)
   onLoad: function(options){
-    
+    this.getSwiperList();
+    this.getCateList();
+    this.getFloorList();
   },
-  onReady: function(){
-    
+  
+  getSwiperList(){
+      request({url:"https://api.it120.cc/kotoba/banner/list"})
+      .then(result=>{
+        this.setData({swiperList:result.data.data})
+      })
   },
-  onShow: function(){
-    
+  getCateList(){
+    request({url:"https://api-hmugo-web.itheima.net/api/public/v1/home/catitems"})
+    .then(result=>{
+      this.setData({cateList:result.data.message})
+    })
   },
-  onHide: function(){
-
-  },
-  onUnload: function(){
-
-  },
-  onPullDownRefresh: function(){
-
-  },
-  onReachBottom: function(){
-
-  },
-  onShareAppMessage: function(){
-
-  },
-  onPageScroll: function(){
-
-  },
-  //item(index,pagePath,text)
-  onTabItemTap:function(item){
-
+  getFloorList(){
+    request({url:"https://api-hmugo-web.itheima.net/api/public/v1/home/floordata"})
+    .then(result=>{
+      this.setData({floorList:result.data.message})
+    })
   }
+  
 });

@@ -1,3 +1,4 @@
+import {request} from "../../request/index.js";
 // pages/category/index.js
 Page({
 
@@ -5,62 +6,47 @@ Page({
    * Page initial data
    */
   data: {
+    rightContent:[],
+    leftMenuList:[],
+    //onlick menu
+    currentIndex:0
 
   },
+
+
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-
+    this.getCates();
   },
 
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
-  onReady: function () {
+  getCates(){
+    request({
+      url:"https://api-hmugo-web.itheima.net/api/public/v1/categories"})
+      .then(res=>{
+        console.log(res);
+        this.Cates=res.data.message;
+        let leftMenuList=this.Cates.map(v=>v.cat_name);
 
+        let rightContent=this.Cates[0].children;
+        this.setData({
+          leftMenuList,rightContent
+        })
+      })
   },
 
-  /**
-   * Lifecycle function--Called when page show
-   */
-  onShow: function () {
+  // on click menu
+  handleItemTab(e){
+    const{index}=e.currentTarget.dataset;
+    let rightContent=this.Cates[index].children;
+    this.setData({
+      currentIndex:index,
+      rightContent
+    })
 
-  },
+  } 
 
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * Called when user click on the top right corner to share
-   */
-  onShareAppMessage: function () {
-
-  }
+ 
 })
