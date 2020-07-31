@@ -14,21 +14,21 @@ Page({
   },
   
   getSwiperList(){
-      request({url:"https://api.it120.cc/kotoba/banner/list"})
+      request({url:"/home/swiperdata"})
       .then(result=>{
-        this.setData({swiperList:result.data.data})
+        this.setData({swiperList:result})
       })
   },
   getCateList(){
-    request({url:"https://api-hmugo-web.itheima.net/api/public/v1/home/catitems"})
+    request({url:"/home/catitems"})
     .then(result=>{
-      this.setData({cateList:result.data.message})
+      this.setData({cateList:result})
     })
   },
   getFloorList(){
-    request({url:"https://api-hmugo-web.itheima.net/api/public/v1/home/floordata"})
+    request({url:"/home/floordata"})
     .then(result=>{
-      this.setData({floorList:result.data.message})
+      this.setData({floorList:result})
     })
   }
   

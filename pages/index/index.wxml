@@ -9,8 +9,8 @@
 
             <block wx:for="{{swiperList}}" wx:key="userIDs">  
                 <swiper-item>  
-                <!-- image size = 750x180-->
-                    <image src="{{item.picUrl}}" class="slide-image" mode="widthFix"/>  
+                <!-- image size = 750x360-->
+                    <image src="{{item.image_src}}" class="slide-image" mode="widthFix"/>  
                 </swiper-item>  
                 
             </block>

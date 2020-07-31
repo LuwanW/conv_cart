@@ -9,7 +9,8 @@ Page({
     rightContent:[],
     leftMenuList:[],
     //onlick menu
-    currentIndex:0
+    currentIndex:0,
+    scrollTop:0
 
   },
 
@@ -19,22 +20,52 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-    this.getCates();
-  },
+    //this.getCates();
+    // upgrade to use local storatge data -> faster loading
 
-  getCates(){
-    request({
-      url:"https://api-hmugo-web.itheima.net/api/public/v1/categories"})
-      .then(res=>{
-        console.log(res);
-        this.Cates=res.data.message;
+    // get local storage
+    const Cates = wx.getStorageSync("cates");
+    if (!Cates){
+      this.getCates();
+    }else{
+      // define date
+      if(Date.now()-Cates.time>1000*10){
+        this.getCates();
+      }else{
+        //console.log("use old data!!!!");
+        this.Cates=Cates.data;
         let leftMenuList=this.Cates.map(v=>v.cat_name);
-
         let rightContent=this.Cates[0].children;
         this.setData({
           leftMenuList,rightContent
         })
-      })
+      }
+    }
+  },
+
+  async getCates(){
+    // request({
+    //   url:"/categories"})
+    //   .then(res=>{
+    //     this.Cates=res.data.message;
+
+    //     // store the data into local storage
+    //     wx.setStorageSync("cates",{time:Date.now(), data:this.Cates});
+
+    //     let leftMenuList=this.Cates.map(v=>v.cat_name);
+    //     let rightContent=this.Cates[0].children;
+    //     this.setData({
+    //       leftMenuList,rightContent
+    //     })
+    //   })
+    // // use async, await to use es7 sent request
+    const res=await request({url:"/categories"});
+    this.Cates = res;
+    wx.setStorageSync("cates",{time:Date.now(), data:this.Cates});
+
+    let leftMenuList=this.Cates.map(v=>v.cat_name);
+    let rightContent=this.Cates[0].children;
+    this.setData({leftMenuList,rightContent})
   },
 
   // on click menu
@@ -43,9 +74,10 @@ Page({
     let rightContent=this.Cates[index].children;
     this.setData({
       currentIndex:index,
-      rightContent
+      rightContent,
+      scrollTop:0
     })
-
+    
   } 
 
  
