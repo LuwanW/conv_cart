@@ -4,7 +4,6 @@
 }
 .tabs_title{
     display: flex;
-    padding: 15rpx 0;
 }
 
 .title_item{
@@ -12,6 +11,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 15rpx 0;
+
 }
 .active{
     color: var(--themeColor);

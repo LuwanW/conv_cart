@@ -4,5 +4,6 @@
     "Tabs":"../../components/Tabs/Tabs"
 
   },
-  "navigationBarTitleText":"goods list"
+  "navigationBarTitleText":"goods list",
+  "enablePullDownRefresh":true
 }

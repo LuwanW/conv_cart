@@ -13,6 +13,8 @@
 
     </view>
 
-    <view class="tabs_content"></view>
+    <view class="tabs_content">
+        <slot></slot>
+    </view>
 
 </view>
