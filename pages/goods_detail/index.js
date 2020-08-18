@@ -54,6 +54,45 @@ Page({
     });
 
 
+  },
+
+  // click to add to the cart
+  /*
+  1. get number in cart
+
+  
+  */ 
+  handleCartAdd(){
+    //  1. get number in cart
+    let cart = wx.getStorageSync("cart")||[];
+    // check if the item is already in cart
+    let index=cart.findIndex(v=>v.goods_id===this.GoodsInfo.goods_id);
+    if (index===-1){
+      // not found
+      this.GoodsInfo.num=1;
+      cart.push(this.GoodsInfo);
+
+    }else{
+      cart[index].num++;
+      // num++
+    }
+    // add cart back to storage
+    wx.setStorageSync("cart", cart);
+
+    // window pop up
+    wx.showToast({
+      title: 'Success',
+      icon: 'success',
+      image: '',
+      duration: 1500,
+      // prevent user click add contiousely 
+      mask: true,
+      success: (result)=>{
+        
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
   }
  
 })

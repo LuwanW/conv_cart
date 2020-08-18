@@ -1,66 +1,43 @@
 // pages/cart/index.js
+
+
 Page({
 
-  /**
-   * Page initial data
-   */
-  data: {
+  handleChooseAddress(){
+    //1. get permittion
+    wx.getSetting({
+      success: (result)=>{
+        // use [] to get inner data when the naming is weired or there is too many layer
+        const scopeAddress=result.authSetting['scope.address']
+        // if user aggreed for getting address or the user was never asked for address=> get address
+        if(scopeAddress===true||scopeAddress===undefined){
+          wx.chooseAddress({
+            success: (r1)=>{
+              console.log(r1)
+            },
+            fail: ()=>{},
+            complete: ()=>{}
+          });
+        }else{
+          // the user has refused the authtication of giving address, ask the user to go to setting to give authentification
+          wx.openSetting({
+            success: (r2)=>{
+              wx.chooseAddress({
+                success: (r1)=>{
+                  console.log(1)
+                },
+                fail: ()=>{},
+                complete: ()=>{}
+              });
+            },
+            fail: ()=>{},
+            complete: ()=>{}
+          });
 
-  },
-
-  /**
-   * Lifecycle function--Called when page load
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page show
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * Called when user click on the top right corner to share
-   */
-  onShareAppMessage: function () {
-
+        }
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
   }
 })
