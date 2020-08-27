@@ -70,6 +70,7 @@ Page({
     if (index===-1){
       // not found
       this.GoodsInfo.num=1;
+      this.GoodsInfo.checked=true;
       cart.push(this.GoodsInfo);
 
     }else{
