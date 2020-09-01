@@ -1,5 +1,5 @@
 // pages/cart/index.js
-import {getSetting, chooseAddress, openSetting, showModal} from "../../utils/asyncWx.js";
+import {getSetting, chooseAddress, openSetting, showModal, showToast} from "../../utils/asyncWx.js";
 
 Page({
 
@@ -93,7 +93,6 @@ Page({
   },
 
   setCart(cart){
-    wx.setStorageSync("cart", cart);
 
     let allChecked = true
     let totalPrice=0;
@@ -110,6 +109,7 @@ Page({
     })
 
     allChecked=cart.length!=0?allChecked:false;
+    wx.setStorageSync("cart", cart);
 
     this.setData({
       cart,
@@ -155,7 +155,33 @@ Page({
     }
 
 
+    },
+
+  async handlePay(){
+    // check if address is saved
+    const {address, totalNum}= this.data;
+    if(!address.userName){
+      await showToast({title:"You have not select your address"})
+      return;
     }
+
+    // check if item in cart has been selected 
+    if(totalNum===0){
+      await showToast({title:"You have not select any item to check out"})
+      return;
+    }
+
+    // go to pay page 
+    wx.navigateTo({
+      url: '/pages/pay/index',
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
+  }
 
 
   

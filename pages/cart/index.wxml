@@ -93,5 +93,5 @@
         </view>
     </view>
 
-    <view class="order_pay_wrap">Check Out({{totalNum}})</view>
+    <view class="order_pay_wrap" bindtap="handlePay">Check Out({{totalNum}})</view>
 </view>
