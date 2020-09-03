@@ -1,2 +1,101 @@
 <!--pages/user/index.wxml-->
-<text>pages/user/index.wxml</text>
+
+
+<view class="user_info_wrap">
+    <view wx:if="{{userInfo.avatarUrl}}"class="user_img_wrap">
+        <image class="user_bg" src="{{userInfo.avatarUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+        <view class="user_info">
+            <image class="user_icon" src="{{userInfo.avatarUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">     
+            </image>
+            <view class="user_name">{{userInfo.nickName}}</view>
+        </view>
+    
+    </view>
+
+    <view wx:else class="user_btn">
+        <navigator class="" target="" url="/pages/login/index" hover-class="navigator-hover" open-type="navigate">
+        Login
+        </navigator>
+    </view>
+
+</view>
+
+<view class="user_content">
+    <view class="user_main">
+        <view class="history_wrap">
+            <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+                <view class="his_num">0</view>
+                <view class="his_name">store</view>
+            </navigator>
+
+             <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+                <view class="his_num">0</view>
+                <view class="his_name">goods</view>
+            </navigator>
+
+            <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+                <view class="his_num">0</view>
+                <view class="his_name">liked</view>
+            </navigator>
+            
+
+            <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+                <view class="his_num">0</view>
+                <view class="his_name">history</view>
+            </navigator>
+        
+
+            
+
+        </view>
+
+        <view class="orders_wrap">
+            <view class="orders_title">My Orders</view>
+            <view class="order_content">
+            
+                <navigator >
+                    <view class="iconfont icon-dingdan"></view>
+                    <view class="order_name">all</view>
+                </navigator>
+                
+                <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+                    <view class="iconfont icon-fufei"></view>
+                    <view class="order_name">unpaid</view>
+                </navigator>
+
+                <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+                    <view class="iconfont icon-shouhuo"></view>
+                    <view class="order_name">dispached</view>
+                </navigator>
+
+                <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+                    <view class="iconfont icon-fufei"></view>
+                    <view class="order_name">return</view>
+                </navigator>
+
+            </view>
+            
+        </view>
+
+        <view class="address_wrap">
+            Manage your address
+        </view>
+
+
+        <view class="app_info_wrap">
+            <view class="app_info_contact">
+                <text>Contact us</text>
+                <text>123-456-7890</text>
+ 
+            </view>
+            <view class="app_info_item">Suggestion</view>
+            <view class="app_info_item">about us</view>
+        </view>
+
+        <view class="recommend_wrap">
+            share this app
+        </view>
+
+    </view>
+
+</view>

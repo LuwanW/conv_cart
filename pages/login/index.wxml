@@ -1,4 +1,4 @@
 <!--pages/login/index.wxml-->
-<button class="default" size="default" type="primary" plain="True" >
+<button class="default" size="default" type="primary" plain="True" bindgetuserinfo="handleGetUserInfo" open-type="getUserInfo">
     Login
 </button>
