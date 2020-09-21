@@ -6,10 +6,13 @@ This is a wechart miniapp that work as a online shopping cross-platform app
 - quick demo of the main features is shown below
 <br/><br/>
 # demos
-
 ![mainpage](https://github.com/LuwanW/conv_cart/blob/master/demo/main.PNG?raw=true "mainpage")
+
 ![category](https://github.com/LuwanW/conv_cart/blob/master/demo/category.PNG?raw=true "category")
+
 ![goods](https://github.com/LuwanW/conv_cart/blob/master/demo/goods.PNG?raw=true "goods")
+
 ![cart](https://github.com/LuwanW/conv_cart/blob/master/demo/cart.PNG?raw=true "cart")
+
 ![user](https://github.com/LuwanW/conv_cart/blob/master/demo/user.PNG?raw=true "user")
 
